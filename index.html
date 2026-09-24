@@ -1,1 +1,227 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>BOSCONO LOOK — ISSUE 00</title>
+<meta name="description" content="보스코노 의류를 쇼핑몰 썸네일이 아니라 형태·공기·무게로 다시 찍은 에디토리얼 필름."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo+Narrow:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--void:#050505;--paper:#e6dccb;--ink:#d8cfc0;--mute:#8a8378;--rule:rgba(230,220,203,.14);--red:#c43a2a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--ink);font-family:"IBM Plex Sans KR",sans-serif;font-weight:300;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.bar{position:fixed;top:0;left:0;right:0;z-index:40;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px 22px;background:linear-gradient(to bottom,rgba(5,5,5,.72),transparent)}
+.brand{font-family:"Archivo Narrow",sans-serif;font-weight:700;letter-spacing:.38em;font-size:12px}
+.brand small{display:block;letter-spacing:.28em;font-weight:500;font-size:9px;color:var(--mute);margin-top:4px}
+.issue{font-family:"Archivo Narrow",sans-serif;letter-spacing:.32em;font-size:11px;color:var(--red)}
+.bar nav{display:flex;gap:18px;justify-content:flex-end;font-size:10px;letter-spacing:.26em;text-transform:uppercase}
+.bar nav a{opacity:.72}
+.pill{border:1px solid var(--paper);padding:6px 11px;letter-spacing:.22em;font-size:10px}
+.cover{min-height:100svh;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr)}
+.cover-still{position:relative;min-height:100svh;overflow:hidden}
+.cover-still img{transform:scale(1.04);filter:contrast(1.06) saturate(.88)}
+.rebate{position:absolute;left:0;top:0;bottom:0;width:18px;display:flex;flex-direction:column;justify-content:space-evenly;padding:8px 0;pointer-events:none}
+.rebate i{display:block;width:10px;height:7px;background:#1a1a1a;margin-left:4px;box-shadow:0 0 0 1px #2a2a2a}
+.cover-copy{padding:22vh 5vw 8vh 4vw;display:flex;flex-direction:column;justify-content:flex-end}
+.k{font-family:"Archivo Narrow",sans-serif;letter-spacing:.4em;font-size:11px;color:var(--red);margin-bottom:22px}
+h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(52px,8.4vw,118px);line-height:.84;letter-spacing:-.035em}
+h1 em{font-style:italic;display:block;font-size:.46em;margin-top:14px;color:#cfc6b8}
+.lede{margin-top:28px;max-width:34ch;font-size:15px;line-height:1.85;color:#c9c0b3}
+.meta{margin-top:36px;display:flex;gap:28px;font-size:11px;letter-spacing:.18em;color:var(--mute);text-transform:uppercase}
+.sheet{padding:72px 5vw}
+.sheet.paper{background:var(--paper);color:#1a1714}
+h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(34px,5.6vw,72px);line-height:.92;letter-spacing:-.03em}
+.sub{margin-top:16px;max-width:48ch;line-height:1.8;color:var(--mute)}
+.sheet.paper .sub{color:#5c564e}
+.index{margin-top:48px;border-top:1px solid var(--rule)}
+.sheet.paper .index{border-color:rgba(26,23,20,.14)}
+.row{display:grid;grid-template-columns:72px 1.1fr .9fr 140px;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--rule)}
+.sheet.paper .row{border-color:rgba(26,23,20,.12)}
+.row:hover .nm{color:var(--red)}
+.no{font-family:"Archivo Narrow",sans-serif;letter-spacing:.2em;color:var(--red);font-size:13px}
+.nm{font-family:"Instrument Serif",serif;font-size:28px}
+.why{font-size:13px;line-height:1.55;color:var(--mute)}
+.sheet.paper .why{color:#5e5850}
+.go{font-size:10px;letter-spacing:.22em;text-align:right;text-transform:uppercase}
+.chapter{display:grid;grid-template-columns:1.15fr .85fr;min-height:92vh}
+.chapter.reverse{grid-template-columns:.85fr 1.15fr}
+.chapter .still{min-height:92vh;position:relative;overflow:hidden}
+.chapter .still img{animation:drift 32s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1.02)}to{transform:scale(1.08) translate3d(-1.4%,1%,0)}}
+.chapter .text{padding:10vh 6vw;display:flex;flex-direction:column;justify-content:flex-end}
+.num{font-family:"Archivo Narrow",sans-serif;letter-spacing:.34em;font-size:11px;color:var(--red);margin-bottom:16px}
+.chapter h2{font-size:clamp(36px,5vw,68px)}
+.note{margin-top:20px;max-width:36ch;line-height:1.85;color:#c4bbb0}
+.sku{margin-top:10px;font-size:12px;color:var(--mute)}
+.cta{margin-top:28px;align-self:flex-start}
+.vocab{font-family:"Instrument Serif",serif;font-size:clamp(28px,4.2vw,52px);line-height:1.28;max-width:18ch}
+.vocab b{font-weight:400;color:var(--red);font-style:italic}
+.defs{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.defs dt{font-family:"Archivo Narrow",sans-serif;letter-spacing:.28em;font-size:11px;color:var(--red);margin-top:22px}
+.defs dd{margin-top:6px;color:#c4bbb0;line-height:1.7;font-size:14px}
+.score{display:grid;grid-template-columns:.7fr 1.3fr;gap:40px;align-items:end}
+.score ol{list-style:none}
+.score li{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:20px 0;border-top:1px solid var(--rule)}
+.score li span{font-family:"Archivo Narrow",sans-serif;color:var(--red);letter-spacing:.2em}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;min-height:62vh}
+.pair img{min-height:62vh}
+footer{padding:48px 5vw 36px;border-top:1px solid var(--rule);display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:24px;color:var(--mute);font-size:13px;line-height:1.8}
+footer strong{display:block;font-family:"Archivo Narrow",sans-serif;color:var(--paper);letter-spacing:.28em;font-weight:600;margin-bottom:8px}
+@media(max-width:900px){
+  .bar nav{display:none}
+  .cover,.chapter,.chapter.reverse,.score,.pair,footer,.row{grid-template-columns:1fr}
+  .cover-still,.chapter .still{min-height:68vh}
+  .cover-copy{padding:8vh 6vw}
+  .go{text-align:left}
+}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="#top">BOSCONO<small>LOOK / ATELIER</small></a>
+  <div class="issue">ISSUE 00 — FILM</div>
+  <nav>
+    <a href="#index">Index</a>
+    <a href="#looks">Looks</a>
+    <a href="#words">Words</a>
+    <a class="pill" href="https://boscono.co.kr/" target="_blank" rel="noopener">Official Mall</a>
+  </nav>
+</header>
+<section class="cover" id="top">
+  <div class="cover-still">
+    <div class="rebate" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <img src="assets/01-column.jpg" alt="column vest"/>
+  </div>
+  <div class="cover-copy">
+    <p class="k">NOT A PRODUCT SHOT</p>
+    <h1>검정은<br>색이 아니라<br>구조다<em>Black as architecture</em></h1>
+    <p class="lede">공식몰의 GIF를 옮기지 않았다. 언발·벌루·박시·포켓·스티치를 스튜디오와 골목에서 다시 찍고, 문장을 다시 쌐다. 가격과 장바구니는 본점의 일.</p>
+    <div class="meta"><span>Seoul · 2026</span><span>8 stills</span><span>Re-shot</span></div>
+  </div>
+</section>
+<section class="sheet paper" id="index">
+  <p class="k">LOOK INDEX</p>
+  <h2>쇼핑몰의 옷을<br>필름의 단위로.</h2>
+  <p class="sub">상품명 뒤에 붙어 있던 수식어를 촬영 지시로 바꾸었다. 모델은 페르소나고, 주인공은 기장·부피·어귷남이다.</p>
+  <div class="index">
+    <a class="row" href="#l01"><span class="no">01</span><span class="nm">기둥</span><span class="why">아방포켓롱조끼 — 수직이 먼저 선다</span><span class="go">Look →</span></a>
+    <a class="row" href="#l02"><span class="no">02</span><span class="nm">지연</span><span class="why">메리언발롱자켓 — 밑단이 한 박자 늦다</span><span class="go">Look →</span></a>
+    <a class="row" href="#l03"><span class="no">03</span><span class="nm">무게</span><span class="why">포켓 — 손이 들어가면 중심이 내려간다</span><span class="go">Look →</span></a>
+    <a class="row" href="#l04"><span class="no">04</span><span class="nm">공기</span><span class="why">벌루아방롱스커트 — 회전이 원을 남긴다</span><span class="go">Look →</span></a>
+    <a class="row" href="#l05"><span class="no">05</span><span class="nm">절단</span><span class="why">크롭 — 길이를 줄이면 태도만 남는다</span><span class="go">Look →</span></a>
+    <a class="row" href="#l06"><span class="no">06</span><span class="nm">골목</span><span class="why">박시 레이어 — 조각이 보폭이 된다</span><span class="go">Look →</span></a>
+    <a class="row" href="#l07"><span class="no">07</span><span class="nm">누아르</span><span class="why">누아르원피스 — 한 장이 코디를 끝낸다</span><span class="go">Look →</span></a>
+    <a class="row" href="#l08"><span class="no">08</span><span class="nm">도면</span><span class="why">라인스티치 — 봉제선은 장식이 아니다</span><span class="go">Look →</span></a>
+  </div>
+</section>
+<div id="looks">
+<section class="chapter" id="l01">
+  <div class="still"><img src="assets/01-column.jpg" alt="column"/></div>
+  <div class="text">
+    <p class="num">LOOK 01 / COLUMN</p>
+    <h2>여름마다<br>돌아오는<br>검은 기둥.</h2>
+    <p class="note">아방포켓롱조끼는 재입고 알림의 대상이 아니라, 실루엣의 기준선이다.</p>
+    <p class="sku">아방포켓롱조끼</p>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EC%95%84%EB%B0%A9%ED%8F%AC%EC%BC%93%EB%A1%B1%EC%A1%B0%EB%81%BC/6452/" target="_blank" rel="noopener">기둥 보기</a>
+  </div>
+</section>
+<section class="chapter reverse" id="l02">
+  <div class="text">
+    <p class="num">LOOK 02 / DELAY</p>
+    <h2>등이 먼저 돌고<br>기장이 따라온다.</h2>
+    <p class="note">메리언발롱자켓을 정면 상품컷으로 두면 벌루은 그저 풍성한 자켓이 된다. 등을 찍으면 지연이 보인다.</p>
+    <p class="sku">메리언발롱자켓</p>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EB%A9%94%EB%A6%AC%EC%96%B8%EB%B0%9C%EB%A1%B1%EC%9E%90%EC%BC%93/7657/" target="_blank" rel="noopener">지연 보기</a>
+  </div>
+  <div class="still"><img src="assets/02-air.jpg" alt="delay"/></div>
+</section>
+<section class="chapter" id="l03">
+  <div class="still"><img src="assets/03-pocket.jpg" alt="pocket"/></div>
+  <div class="text">
+    <p class="num">LOOK 03 / WEIGHT</p>
+    <h2>포켓은<br>수납이 아니라<br>무게다.</h2>
+    <p class="note">손을 넣는 순간 실루엣의 무게중심이 한 펴 내려간다.</p>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EC%95%84%EB%B0%A9%ED%8F%AC%EC%BC%93%EB%A1%B1%EC%A1%B0%EB%81%BC/6452/" target="_blank" rel="noopener">무게 보기</a>
+  </div>
+</section>
+<section class="chapter reverse" id="l04">
+  <div class="text">
+    <p class="num">LOOK 04 / AIR</p>
+    <h2>걷는 것이 아니라<br>공기를 옮긴다.</h2>
+    <p class="note">벌루아방롱스커트는 정지컷에서 가장 오해받는다. 회전이 끝난 1초, 천이 원으로 남는 프레임이 설계도다.</p>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EB%B2%8C%EB%A3%AC%EC%95%84%EB%B0%A9%EB%A1%B1%EC%8A%A4%EC%BB%A4%ED%8A%B8bcsk1043/7174/" target="_blank" rel="noopener">공기 보기</a>
+  </div>
+  <div class="still"><img src="assets/04-volume.jpg" alt="balloon"/></div>
+</section>
+<section class="chapter" id="l05">
+  <div class="still"><img src="assets/05-crop.jpg" alt="crop"/></div>
+  <div class="text">
+    <p class="num">LOOK 05 / CROP</p>
+    <h2>길이를 버리면<br>어깨가 남는다.</h2>
+    <p class="note">B라벨 크롭은 배를 보여주려는 옷이 아니다. 기장을 자르면 박시의 사각형이 더 크게 읽힌다.</p>
+    <a class="pill cta" href="https://boscono.co.kr/product/b%EB%9D%BC%EB%B2%A8-%ED%8F%AC%ED%82%A4%ED%83%91%EC%9E%90%EC%BC%93/7630/" target="_blank" rel="noopener">절단 보기</a>
+  </div>
+</section>
+<section class="chapter reverse" id="l06">
+  <div class="text">
+    <p class="num">LOOK 06 / STREET</p>
+    <h2>조각이 골목으로<br>내려올 때.</h2>
+    <p class="note">화이트 사이클로라마의 상품컷을 버리면 박시 셔츠는 일상 보폭이 된다.</p>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EB%B0%95%EC%8B%9C%EC%95%84%EB%B0%A9%EC%85%94%EC%B8%A0/7626/" target="_blank" rel="noopener">골목 보기</a>
+  </div>
+  <div class="still"><img src="assets/06-street.jpg" alt="street"/></div>
+</section>
+<section class="chapter" id="l07">
+  <div class="still"><img src="assets/07-noir.jpg" alt="noir"/></div>
+  <div class="text">
+    <p class="num">LOOK 07 / NOIR</p>
+    <h2>한 장의 검정이<br>코디를 끝낸다.</h2>
+    <p class="note">누아르원피스는 장식을 더하지 않는다. 세로의 한 줄이면 저녁이 끝난다.</p>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EB%88%84%EC%95%84%EB%A5%B4%EC%9B%90%ED%94%BC%EC%8A%A4/7287/" target="_blank" rel="noopener">누아르 보기</a>
+  </div>
+</section>
+</div>
+<section class="sheet" id="words">
+  <p class="k">VOCABULARY</p>
+  <p class="vocab">이름에 이미 <b>설계도</b>가 있다. 언발은 시간, 벌루은 공기, 박시는 사각형, 포켓은 무게, 스티치는 도면.</p>
+  <dl class="defs">
+    <dt>UNEVEN</dt><dd>한쪽 밑단이 늦게 따라온다.</dd>
+    <dt>BALLOON</dt><dd>멈추 때 옷 안에 공기가 남는다.</dd>
+    <dt>BOXY</dt><dd>어깨가 몸보다 넓다.</dd>
+    <dt>POCKET</dt><dd>수납이 아니라 건축.</dd>
+    <dt>STITCH</dt><dd>봉제선은 장식이 아니라 도면.</dd>
+    <dt>NOIR</dt><dd>색을 덜면 형태만 남는다.</dd>
+  </dl>
+</section>
+<section class="sheet" id="l08">
+  <p class="k">LOOK 08 / DRAWING</p>
+  <h2 style="margin-bottom:28px">이 선은<br>장식이 아니다.</h2>
+  <div class="score">
+    <ol>
+      <li><span>I</span><div><strong>어귷남의 삼중주</strong><p class="note" style="margin-top:8px">언발 조끼 아래 언발 티, 그 아래 벌루 팬츠.</p></div></li>
+      <li><span>II</span><div><strong>기둥과 공기</strong><p class="note" style="margin-top:8px">롱조끼가 수직을 세우고 스커트가 원을 그린다.</p></div></li>
+      <li><span>III</span><div><strong>B가 골목으로</strong><p class="note" style="margin-top:8px">라벨의 어깨가 일상의 폭으로 내려올 때 아방가르드는 걸음이 된다.</p></div></li>
+    </ol>
+    <div class="pair">
+      <img src="assets/08-stitch.jpg" alt="stitch"/>
+      <img src="assets/03-pocket.jpg" alt="pocket"/>
+    </div>
+  </div>
+</section>
+<section class="sheet paper">
+  <p class="k">RETURNED</p>
+  <h2>유행해서가 아니라<br>이 비대칭이<br>아직 필요해서.</h2>
+  <p class="sub">언발헤레조끼 6차. 재입고는 할인 알림이 아니라 형태의 귀환이다.</p>
+  <p style="margin-top:28px"><a class="pill" href="https://boscono.co.kr/product/%EC%96%B8%EB%B0%9C%ED%97%A4%EB%A0%88%EC%A1%B0%EB%81%BC-6%EC%B0%A8-%EC%B6%94%EA%B0%80%EC%A0%9C%EC%9E%91/7223/" target="_blank" rel="noopener" style="color:#1a1714;border-color:#1a1714">돌아온 형태</a></p>
+</section>
+<footer>
+  <div><strong>BOSCONO LOOK</strong>에디토리얼 재촬영. 공식몰 썸네일의 복제가 아니다.</div>
+  <div><p><a href="https://boscono.co.kr/" target="_blank" rel="noopener">boscono.co.kr</a></p><p><a href="https://www.instagram.com/black_boscono/" target="_blank" rel="noopener">@black_boscono</a></p></div>
+  <div><p>CS 02-536-4145</p><p>juny79 / boscono-look</p></div>
+</footer>
+</body>
+</html>
