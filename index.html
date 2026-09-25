@@ -4,268 +4,389 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>BOSCONO LOOK — ISSUE 00</title>
-<meta name="description" content="보스코노를 쇼핑몰이 아니라 필름으로 다시 찍는다. 언발, 벌룬, 박시, 포켓, 스티치."/>
+<meta name="description" content="행거를 거절한다. 언발, 벌룬, 박시, 포켓, 스티치. 보스코노를 필름으로 다시 찍는다."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo+Narrow:wght@500;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-:root{--void:#050505;--paper:#e4d8c4;--ink:#ddd3c4;--mute:#8a8378;--rule:rgba(228,216,196,.16);--red:#d12b1e}
+:root{
+  --void:#050505;--paper:#e6d9c4;--ink:#e8ddd0;--mute:#8d867b;
+  --rule:rgba(230,217,196,.14);--red:#e12f20;--flash:#f3ece2;
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--void);color:var(--ink);font-family:"IBM Plex Sans KR",sans-serif;font-weight:400;letter-spacing:-.02em;word-break:keep-all;overflow-x:hidden;cursor:none}
+body{
+  background:var(--void);color:var(--ink);
+  font-family:"IBM Plex Sans KR",sans-serif;
+  font-weight:400;letter-spacing:0;
+  word-break:keep-all;overflow-wrap:break-word;
+  line-height:1.55;overflow-x:hidden;cursor:none;
+}
 a{color:inherit;text-decoration:none}
-img{display:block;width:100%;height:100%;object-fit:cover;will-change:transform}
-.cur{position:fixed;z-index:80;width:54px;height:54px;border:1px solid var(--paper);border-radius:50%;pointer-events:none;mix-blend-mode:difference;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-family:"Archivo Narrow",sans-serif;font-size:9px;letter-spacing:.16em}
-.cur b{font-weight:700}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button{font:inherit;background:none;border:0;color:inherit}
+.en{font-family:"Archivo Narrow",sans-serif;letter-spacing:.22em;text-transform:uppercase}
+
+.grain{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.flash{position:fixed;inset:0;z-index:75;background:var(--flash);opacity:0;pointer-events:none}
+.flash.on{animation:blink .28s steps(2) 1}
+@keyframes blink{0%{opacity:.85}50%{opacity:0}70%{opacity:.35}100%{opacity:0}}
+
+.cur{position:fixed;z-index:80;width:62px;height:62px;border:1px solid var(--paper);border-radius:50%;
+  pointer-events:none;mix-blend-mode:difference;transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.cur b{font-family:"Archivo Narrow",sans-serif;font-size:13px;letter-spacing:.12em;font-weight:700}
+.cur i{font-family:"Archivo Narrow",sans-serif;font-style:normal;font-size:8px;letter-spacing:.2em;opacity:.7}
+
 .bar{position:fixed;inset:0 0 auto 0;z-index:40;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 24px;mix-blend-mode:difference}
-.brand{font-family:"Archivo Narrow",sans-serif;font-weight:700;letter-spacing:.4em;font-size:12px}
-.brand small{display:block;letter-spacing:.3em;font-weight:500;font-size:9px;margin-top:4px;opacity:.65}
-.clock{font-family:"Archivo Narrow",sans-serif;letter-spacing:.28em;font-size:11px;color:#ff4a3a}
-.bar nav{display:flex;gap:18px;justify-content:flex-end;font-size:10px;letter-spacing:.28em;text-transform:uppercase}
-.pill{border:1px solid currentColor;padding:7px 12px;letter-spacing:.2em;font-size:10px;transition:background .25s,color .25s}
+.brand{font-family:"Archivo Narrow",sans-serif;font-weight:700;letter-spacing:.38em;font-size:12px}
+.brand small{display:block;letter-spacing:.28em;font-weight:500;font-size:9px;margin-top:4px;opacity:.65}
+.clock{font-family:"Archivo Narrow",sans-serif;letter-spacing:.26em;font-size:11px;color:#ff4a3a}
+.bar nav{display:flex;gap:18px;justify-content:flex-end;font-size:10px;letter-spacing:.26em;text-transform:uppercase;font-family:"Archivo Narrow",sans-serif}
+.pill{border:1px solid currentColor;padding:8px 13px;letter-spacing:.18em;font-size:10px;font-family:"Archivo Narrow",sans-serif;text-transform:uppercase;transition:background .2s,color .2s}
 .pill:hover{background:var(--paper);color:var(--void)}
-.cover{min-height:100svh;display:grid;grid-template-columns:1.2fr .8fr}
-.cover-still{position:relative;min-height:100svh;overflow:hidden}
-.cover-still img{transform:scale(1.08);filter:contrast(1.08) saturate(.82)}
-.rebate{position:absolute;left:0;top:0;bottom:0;width:16px;display:flex;flex-direction:column;justify-content:space-evenly;pointer-events:none}
+
+.cover{min-height:100svh;display:grid;grid-template-columns:1.18fr .82fr}
+.cover-still{position:relative;min-height:100svh;overflow:hidden;background:#000}
+.cover-still img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.08);filter:contrast(1.1) saturate(.78);opacity:0;transition:opacity .45s ease}
+.cover-still img.on{opacity:1}
+.rebate{position:absolute;left:0;top:0;bottom:0;width:16px;display:flex;flex-direction:column;justify-content:space-evenly;pointer-events:none;z-index:2}
 .rebate i{width:9px;height:6px;background:#111;margin-left:3px}
-.stamp{position:absolute;right:18px;bottom:18px;font-family:"Archivo Narrow",sans-serif;letter-spacing:.24em;font-size:10px}
-.cover-copy{padding:18vh 5vw 9vh 4vw;display:flex;flex-direction:column;justify-content:flex-end}
-.k{font-family:"Archivo Narrow",sans-serif;letter-spacing:.42em;font-size:11px;color:var(--red);margin-bottom:20px}
-h1,h2{font-family:"IBM Plex Sans KR",sans-serif;font-weight:500;letter-spacing:-.045em;line-height:.92}
-h1{font-size:clamp(44px,7.6vw,104px)}
-h1 em{display:block;margin-top:16px;font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;font-size:.42em;letter-spacing:-.02em;color:#cfc4b4}
-.lede{margin-top:26px;max-width:32ch;font-size:15px;line-height:1.8;font-weight:300;color:#c9bfb1}
-.meta{margin-top:32px;display:flex;gap:22px;font-size:11px;letter-spacing:.16em;color:var(--mute);text-transform:uppercase;font-family:"Archivo Narrow",sans-serif}
-.tape{overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 0;white-space:nowrap}
-.tape b{display:inline-block;animation:run 28s linear infinite;font-family:"Archivo Narrow",sans-serif;letter-spacing:.38em;font-size:13px;font-weight:700}
+.stamp{position:absolute;right:18px;bottom:18px;z-index:2;font-family:"Archivo Narrow",sans-serif;letter-spacing:.22em;font-size:10px}
+.scan{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.08) 48%,transparent 52%);
+  animation:scan 4.8s linear infinite;opacity:.55}
+@keyframes scan{from{transform:translateY(-100%)}to{transform:translateY(100%)}}
+.cover-copy{padding:16vh 5vw 8vh 4vw;display:flex;flex-direction:column;justify-content:flex-end;position:relative}
+.k{font-family:"Archivo Narrow",sans-serif;letter-spacing:.36em;font-size:11px;color:var(--red);margin-bottom:18px;text-transform:uppercase}
+h1,h2{font-family:"IBM Plex Sans KR",sans-serif;font-weight:500;letter-spacing:-.01em;line-height:1.05;word-break:keep-all}
+h1{font-size:clamp(40px,6.6vw,92px)}
+h1 .line{display:block;overflow:hidden}
+h1 .line span{display:block;transform:translateY(110%);animation:rise .7s cubic-bezier(.16,1,.3,1) forwards}
+h1 .line:nth-child(2) span{animation-delay:.08s}
+h1 .line:nth-child(3) span{animation-delay:.16s}
+@keyframes rise{to{transform:none}}
+h1 em{display:block;margin-top:18px;font-style:normal;font-weight:400;font-size:.36em;letter-spacing:0;color:#c9bdae}
+.lede{margin-top:24px;max-width:28ch;font-size:16px;line-height:1.75;font-weight:300;color:#cfc3b3}
+.meta{margin-top:28px;display:flex;gap:20px;font-size:11px;color:var(--mute);font-family:"Archivo Narrow",sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.progress{position:absolute;left:4vw;top:18vh;width:2px;height:28vh;background:rgba(228,216,196,.12)}
+.progress b{display:block;width:100%;height:0;background:var(--red);transition:height .6s}
+
+.tape{overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:13px 0;white-space:nowrap}
+.tape b{display:inline-block;animation:run 26s linear infinite;font-family:"Archivo Narrow",sans-serif;letter-spacing:.32em;font-size:13px;font-weight:700}
 @keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.sheet{padding:80px 5vw}
+
+.sheet{padding:88px 5vw}
 .sheet.paper{background:var(--paper);color:#161310}
 .sheet.paper .k{color:var(--red)}
 .sheet.paper .sub,.sheet.paper .why{color:#5a534b}
-h2{font-size:clamp(32px,5.2vw,68px)}
-.sub{margin-top:16px;max-width:46ch;line-height:1.8;font-weight:300;color:var(--mute)}
+h2{font-size:clamp(30px,4.8vw,64px)}
+.sub{margin-top:16px;max-width:36ch;line-height:1.75;font-weight:300;color:var(--mute)}
+
 .index{margin-top:44px;border-top:1px solid rgba(22,19,16,.14)}
-.row{display:grid;grid-template-columns:64px 1fr 1.1fr 88px;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(22,19,16,.12);position:relative}
-.row .thumb{position:absolute;right:12%;top:50%;width:72px;height:96px;opacity:0;transform:translate(12px,-50%) rotate(4deg);transition:opacity .25s,transform .25s;pointer-events:none;overflow:hidden}
-.row:hover .thumb{opacity:1;transform:translate(0,-50%) rotate(-3deg)}
+.row{display:grid;grid-template-columns:64px 1fr 1.15fr 72px;gap:16px;align-items:center;padding:17px 0;border-bottom:1px solid rgba(22,19,16,.12);position:relative}
+.row .thumb{position:absolute;right:10%;top:50%;width:78px;height:104px;opacity:0;transform:translate(16px,-50%) rotate(6deg);transition:opacity .22s,transform .22s;pointer-events:none;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.28)}
+.row:hover .thumb{opacity:1;transform:translate(0,-50%) rotate(-4deg)}
 .row:hover .nm{color:var(--red)}
-.no{font-family:"Archivo Narrow",sans-serif;letter-spacing:.18em;color:var(--red);font-size:13px}
-.nm{font-size:26px;font-weight:500;letter-spacing:-.03em}
-.why{font-size:13px;line-height:1.5;font-weight:300}
+.no{font-family:"Archivo Narrow",sans-serif;letter-spacing:.16em;color:var(--red);font-size:13px}
+.nm{font-size:26px;font-weight:500;letter-spacing:-.01em}
+.why{font-size:14px;line-height:1.5;font-weight:300}
 .go{font-size:10px;letter-spacing:.2em;text-align:right;text-transform:uppercase;font-family:"Archivo Narrow",sans-serif}
-.chapter{display:grid;grid-template-columns:1.18fr .82fr;min-height:94vh}
-.chapter.reverse{grid-template-columns:.82fr 1.18fr}
-.chapter .still{min-height:94vh;overflow:hidden;position:relative}
-.chapter .still img{animation:drift 26s ease-in-out infinite alternate;filter:contrast(1.06) saturate(.86)}
-@keyframes drift{from{transform:scale(1.03)}to{transform:scale(1.1) translate3d(-2%,1.4%,0)}}
-.chapter .text{padding:11vh 6vw 8vh;display:flex;flex-direction:column;justify-content:flex-end}
-.num{font-family:"Archivo Narrow",sans-serif;letter-spacing:.32em;font-size:11px;color:var(--red);margin-bottom:14px}
-.note{margin-top:18px;max-width:34ch;line-height:1.8;font-weight:300;color:#c3b9ab}
-.sku{margin-top:10px;font-size:12px;color:var(--mute);font-weight:300}
-.cta{margin-top:26px;align-self:flex-start}
-.reveal{opacity:0;transform:translateY(18px);animation:up .8s ease forwards}
-.reveal.d2{animation-delay:.12s}
-@keyframes up{to{opacity:1;transform:none}}
-.vocab{font-size:clamp(26px,4vw,48px);line-height:1.26;max-width:16ch;font-weight:500}
-.vocab i{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;color:var(--red)}
-.defs{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:0 36px}
-.defs dt{font-family:"Archivo Narrow",sans-serif;letter-spacing:.26em;font-size:11px;color:var(--red);margin-top:22px}
-.defs dd{margin-top:6px;color:#c3b9ab;line-height:1.7;font-size:14px;font-weight:300}
-.score{display:grid;grid-template-columns:.68fr 1.32fr;gap:36px;align-items:end}
+
+.chapter{display:grid;grid-template-columns:1.16fr .84fr;min-height:100svh}
+.chapter.reverse{grid-template-columns:.84fr 1.16fr}
+.chapter .still{min-height:100svh;overflow:hidden;position:relative;background:#000}
+.chapter .still img{animation:drift 22s ease-in-out infinite alternate;filter:contrast(1.08) saturate(.8)}
+@keyframes drift{from{transform:scale(1.04)}to{transform:scale(1.12) translate3d(-2%,1.2%,0)}}
+.chapter .text{padding:12vh 6vw 9vh;display:flex;flex-direction:column;justify-content:flex-end}
+.num{font-family:"Archivo Narrow",sans-serif;letter-spacing:.28em;font-size:11px;color:var(--red);margin-bottom:14px}
+.note{margin-top:16px;max-width:28ch;line-height:1.75;font-weight:300;color:#c4b9aa;font-size:15px}
+.sku{margin-top:12px;font-size:12px;color:var(--mute);font-weight:300}
+.cta{margin-top:24px;align-self:flex-start}
+
+.vocab{font-size:clamp(26px,4.2vw,48px);line-height:1.28;max-width:14ch;font-weight:500}
+.vocab i{font-style:normal;color:var(--red)}
+.defs{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.defs dt{font-family:"Archivo Narrow",sans-serif;letter-spacing:.24em;font-size:11px;color:var(--red);margin-top:24px}
+.defs dd{margin-top:7px;color:#c4b9aa;line-height:1.7;font-size:15px;font-weight:300;max-width:28ch}
+
+.score{display:grid;grid-template-columns:.7fr 1.3fr;gap:36px;align-items:end}
 .score ol{list-style:none}
 .score li{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--rule)}
-.score li span{font-family:"Archivo Narrow",sans-serif;color:var(--red);letter-spacing:.18em}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;min-height:64vh}
-.pair img{min-height:64vh;filter:contrast(1.05) saturate(.84)}
+.score li span{font-family:"Archivo Narrow",sans-serif;color:var(--red);letter-spacing:.16em}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;min-height:68vh}
+.pair img{min-height:68vh;filter:contrast(1.06) saturate(.82)}
+
+.slash{position:relative}
+.slash:after{content:"";position:absolute;left:-6%;right:-6%;top:52%;height:2px;background:var(--red);transform:rotate(-8deg);opacity:.85;pointer-events:none}
+
 footer{padding:48px 5vw 36px;border-top:1px solid var(--rule);display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:24px;color:var(--mute);font-size:13px;line-height:1.8;font-weight:300}
-footer strong{display:block;font-family:"Archivo Narrow",sans-serif;color:var(--paper);letter-spacing:.28em;font-weight:700;margin-bottom:8px}
+footer strong{display:block;font-family:"Archivo Narrow",sans-serif;color:var(--paper);letter-spacing:.26em;font-weight:700;margin-bottom:8px}
+
+.in{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.in.show{opacity:1;transform:none}
+
 @media(max-width:900px){
   body{cursor:auto}
-  .cur{display:none}
+  .cur,.grain,.progress{display:none}
   .bar nav{display:none}
   .cover,.chapter,.chapter.reverse,.score,.pair,footer,.row{grid-template-columns:1fr}
-  .cover-still,.chapter .still{min-height:64vh}
+  .cover-still,.chapter .still{min-height:62vh}
   .cover-copy{padding:7vh 6vw}
   .go{text-align:left}
   .row .thumb{display:none}
+  .defs{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
-<div class="cur" id="cur"><b>00</b></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="flash" id="flash" aria-hidden="true"></div>
+<div class="cur" id="cur"><b>00</b><i>CUT</i></div>
+
 <header class="bar">
   <a class="brand" href="#top">BOSCONO<small>LOOK / CUT</small></a>
   <div class="clock" id="clock">00:00:00</div>
   <nav>
     <a href="#index">Index</a>
     <a href="#looks">Looks</a>
-    <a href="#words">Cut</a>
-    <a class="pill" href="https://boscono.co.kr/" target="_blank" rel="noopener">Mall</a>
+    <a href="#words">Lexicon</a>
+    <a class="pill" href="https://boscono.co.kr/" target="_blank" rel="noopener">Shop</a>
   </nav>
 </header>
+
 <section class="cover" id="top">
   <div class="cover-still" id="heroStill">
     <div class="rebate" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <img src="assets/01-column.jpg" alt="column vest still"/>
-    <p class="stamp">LOOK 01 — COLUMN</p>
+    <div class="scan" aria-hidden="true"></div>
+    <img class="on" src="assets/01-column.jpg" alt="기둥으로 다시 찍은 아방포켓롱조끼"/>
+    <img src="assets/02-air.jpg" alt="지연되는 메리언발롱자켓"/>
+    <img src="assets/04-volume.jpg" alt="원을 남기는 벌룬 스커트"/>
+    <img src="assets/07-noir.jpg" alt="한 장의 누아르"/>
+    <p class="stamp" id="heroStamp">LOOK 01 — COLUMN</p>
   </div>
   <div class="cover-copy">
-    <p class="k reveal">NOT FOR THE RACK</p>
-    <h1 class="reveal d2">검정은<br>색이 아니다.<br>절단이다.<em>Cut the color.</em></h1>
-    <p class="lede reveal d2">상품 GIF를 옮기지 않았다. 언발은 시간, 벌룬은 공기, 박시는 사각형이다. 가격은 본점의 일.</p>
-    <div class="meta"><span>Seoul 2026</span><span>8 cuts</span><span>Re-shot</span></div>
+    <div class="progress" aria-hidden="true"><b id="barFill"></b></div>
+    <p class="k">NOT FOR THE RACK</p>
+    <h1>
+      <span class="line"><span>행거를</span></span>
+      <span class="line"><span>거절한다.</span></span>
+      <span class="line"><span>검정은 절단.</span></span>
+    </h1>
+    <p class="lede">대칭은 예의다. 언발은 태도다. 부피는 과장이 아니라 공기이고, 박시는 몸을 다시 그리는 사각형이다.</p>
+    <div class="meta"><span>Seoul 2026</span><span id="frameMeta">Cut 01 / 08</span><span>Re-shot</span></div>
   </div>
 </section>
-<div class="tape" aria-hidden="true"><b>UNEVEN — BALLOON — BOXY — POCKET — STITCH — NOIR — UNEVEN — BALLOON — BOXY — POCKET — STITCH — NOIR — </b></div>
+
+<div class="tape" aria-hidden="true"><b>UNEVEN — BALLOON — BOXY — POCKET — STITCH — NOIR — CUT — UNEVEN — BALLOON — BOXY — POCKET — STITCH — NOIR — CUT — </b></div>
+
 <section class="sheet paper" id="index">
   <p class="k">LOOK INDEX</p>
-  <h2>옷을 팔지 않는다.<br>프레임을 판다.</h2>
-  <p class="sub">수식어를 촬영 지시로 바꾼다. 모델은 페르소나고, 주인공은 기장과 어쌓남이다.</p>
+  <h2 class="in">옷을 진열하지 않는다.<br>형태를 절개한다.</h2>
+  <p class="sub in">상품명이 이미 지시문이다. 언발, 벌룬, 박시. 주인공은 얼굴이 아니라 기장과 무게다.</p>
   <div class="index">
-    <a class="row" href="#l01" data-n="01"><span class="no">01</span><span class="nm">기둥</span><span class="why">아방포켓롱조끼 — 수직이 먼저 선다</span><span class="go">Cut</span><span class="thumb"><img src="assets/01-column.jpg" alt=""/></span></a>
-    <a class="row" href="#l02" data-n="02"><span class="no">02</span><span class="nm">지연</span><span class="why">메리언발롱자켓 — 밑단이 한 박자 늦다</span><span class="go">Cut</span><span class="thumb"><img src="assets/02-air.jpg" alt=""/></span></a>
-    <a class="row" href="#l03" data-n="03"><span class="no">03</span><span class="nm">무게</span><span class="why">포켓 — 손이 들어가면 중심이 내려간다</span><span class="go">Cut</span><span class="thumb"><img src="assets/03-pocket.jpg" alt=""/></span></a>
-    <a class="row" href="#l04" data-n="04"><span class="no">04</span><span class="nm">공기</span><span class="why">벌룬아방롱스커트 — 회전이 원을 남긴다</span><span class="go">Cut</span><span class="thumb"><img src="assets/04-volume.jpg" alt=""/></span></a>
-    <a class="row" href="#l05" data-n="05"><span class="no">05</span><span class="nm">절단</span><span class="why">크롭 — 기장을 버리면 태도가 커진다</span><span class="go">Cut</span><span class="thumb"><img src="assets/05-crop.jpg" alt=""/></span></a>
-    <a class="row" href="#l06" data-n="06"><span class="no">06</span><span class="nm">골목</span><span class="why">박시 레이어 — 조각이 보폭이 된다</span><span class="go">Cut</span><span class="thumb"><img src="assets/06-street.jpg" alt=""/></span></a>
-    <a class="row" href="#l07" data-n="07"><span class="no">07</span><span class="nm">누아르</span><span class="why">누아르원피스 — 한 장이면 저녁이 끝난다</span><span class="go">Cut</span><span class="thumb"><img src="assets/07-noir.jpg" alt=""/></span></a>
-    <a class="row" href="#l08" data-n="08"><span class="no">08</span><span class="nm">도면</span><span class="why">라인스티치 — 봉제선이 옷을 설명한다</span><span class="go">Cut</span><span class="thumb"><img src="assets/08-stitch.jpg" alt=""/></span></a>
+    <a class="row" href="#l01" data-n="01"><span class="no">01</span><span class="nm">기둥</span><span class="why">아방포켓롱조끼 — 몸보다 먼저 선다</span><span class="go">Cut</span><span class="thumb"><img src="assets/01-column.jpg" alt=""/></span></a>
+    <a class="row" href="#l02" data-n="02"><span class="no">02</span><span class="nm">지연</span><span class="why">메리언발롱자켓 — 앞이 오고 뒤가 거부한다</span><span class="go">Cut</span><span class="thumb"><img src="assets/02-air.jpg" alt=""/></span></a>
+    <a class="row" href="#l03" data-n="03"><span class="no">03</span><span class="nm">낙하</span><span class="why">포켓 — 손이 들어가면 중심이 배신한다</span><span class="go">Cut</span><span class="thumb"><img src="assets/03-pocket.jpg" alt=""/></span></a>
+    <a class="row" href="#l04" data-n="04"><span class="no">04</span><span class="nm">잔향</span><span class="why">벌룬아방롱스커트 — 돌고 난 자리만 남는다</span><span class="go">Cut</span><span class="thumb"><img src="assets/04-volume.jpg" alt=""/></span></a>
+    <a class="row" href="#l05" data-n="05"><span class="no">05</span><span class="nm">절단</span><span class="why">크롭 — 길이를 버리면 사각형이 커진다</span><span class="go">Cut</span><span class="thumb"><img src="assets/05-crop.jpg" alt=""/></span></a>
+    <a class="row" href="#l06" data-n="06"><span class="no">06</span><span class="nm">골목</span><span class="why">박시 레이어 — 스튜디오가 죽으면 걸음이 산다</span><span class="go">Cut</span><span class="thumb"><img src="assets/06-street.jpg" alt=""/></span></a>
+    <a class="row" href="#l07" data-n="07"><span class="no">07</span><span class="nm">종결</span><span class="why">누아르원피스 — 한 장이면 코디는 끝이다</span><span class="go">Cut</span><span class="thumb"><img src="assets/07-noir.jpg" alt=""/></span></a>
+    <a class="row" href="#l08" data-n="08"><span class="no">08</span><span class="nm">도면</span><span class="why">라인스티치 — 실밥이 설명서다</span><span class="go">Cut</span><span class="thumb"><img src="assets/08-stitch.jpg" alt=""/></span></a>
   </div>
 </section>
+
 <div id="looks">
-<section class="chapter" id="l01">
-  <div class="still"><img src="assets/01-column.jpg" alt="column"/></div>
+<section class="chapter" id="l01" data-n="01">
+  <div class="still"><img src="assets/01-column.jpg" alt="검은 기둥"/></div>
   <div class="text">
     <p class="num">LOOK 01 / COLUMN</p>
-    <h2>기둥이<br>먼저 선다.</h2>
-    <p class="note">아방포켓롱조끼는 재입고 알림이 아니다. 두 포켓이 슬래브처럼 내려오고, 한쪽 밑단이 땅을 먼저 본다.</p>
+    <h2 class="in">기둥이<br>몸을 기다린다.</h2>
+    <p class="note">아방포켓롱조끼는 재입고 문구가 아니다. 두 포켓이 슬래브가 되고, 한쪽 밑단이 먼저 땅을 본다.</p>
     <p class="sku">아방포켓롱조끼 · 6452</p>
-    <a class="pill cta" href="https://boscono.co.kr/product/%EC%95%84%EB%B0%A9%ED%8F%AC%EC%BC%93%EB%A1%B1%EC%A1%B0%EB%81%BC/6452/" target="_blank" rel="noopener">기둥</a>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EC%95%84%EB%B0%A9%ED%8F%AC%EC%BC%93%EB%A1%B1%EC%A1%B0%EB%81%BC/6452/" target="_blank" rel="noopener">Column</a>
   </div>
 </section>
-<section class="chapter reverse" id="l02">
+
+<section class="chapter reverse" id="l02" data-n="02">
   <div class="text">
     <p class="num">LOOK 02 / DELAY</p>
-    <h2>뒤가<br>한 박자 늦다.</h2>
-    <p class="note">정면 상품컷은 벌룬을 풍성한 자켓으로 죽인다. 등을 찍어야 지연이 산다.</p>
+    <h2 class="in">뒤가<br>한 박자 거절한다.</h2>
+    <p class="note">정면 컷은 벌룬을 ‘풍성한 자켓’으로 죽인다. 등을 찍어야 지연이 산다. 앞은 도착하고, 뒤는 남아 있다.</p>
     <p class="sku">메리언발롱자켓 · 7657</p>
-    <a class="pill cta" href="https://boscono.co.kr/product/%EB%A9%94%EB%A6%AC%EC%96%B8%EB%B0%9C%EB%A1%B1%EC%9E%90%EC%BC%93/7657/" target="_blank" rel="noopener">지연</a>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EB%A9%94%EB%A6%AC%EC%96%B8%EB%B0%9C%EB%A1%B1%EC%9E%90%EC%BC%93/7657/" target="_blank" rel="noopener">Delay</a>
   </div>
-  <div class="still"><img src="assets/02-air.jpg" alt="delay hem"/></div>
+  <div class="still"><img src="assets/02-air.jpg" alt="지연되는 밑단"/></div>
 </section>
-<section class="chapter" id="l03">
-  <div class="still"><img src="assets/03-pocket.jpg" alt="pocket weight"/></div>
+
+<section class="chapter" id="l03" data-n="03">
+  <div class="still"><img src="assets/03-pocket.jpg" alt="포켓의 무게"/></div>
   <div class="text">
-    <p class="num">LOOK 03 / WEIGHT</p>
-    <h2>손이 들어가면<br>세계가 내려간다.</h2>
-    <p class="note">포켓은 수납이 아니다. 무게중심을 한 펴 옮기는 장치다.</p>
+    <p class="num">LOOK 03 / DROP</p>
+    <h2 class="in">손이 들어가면<br>세계가 내려앉는다.</h2>
+    <p class="note">포켓은 수납이 아니다. 무게를 아래로 보내는 장치다. 넣은 손은 이미 태도를 바꾼다.</p>
     <p class="sku">아방포켓롱조끼 / 아방빅포켓팬츠</p>
-    <a class="pill cta" href="https://boscono.co.kr/product/%EC%95%84%EB%B0%A9%ED%8F%AC%EC%BC%93%EB%A1%B1%EC%A1%B0%EB%81%BC/6452/" target="_blank" rel="noopener">무게</a>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EC%95%84%EB%B0%A9%ED%8F%AC%EC%BC%93%EB%A1%B1%EC%A1%B0%EB%81%BC/6452/" target="_blank" rel="noopener">Drop</a>
   </div>
 </section>
-<section class="chapter reverse" id="l04">
+
+<section class="chapter reverse" id="l04" data-n="04">
   <div class="text">
-    <p class="num">LOOK 04 / AIR</p>
-    <h2>스커트가<br>원을 남긴다.</h2>
+    <p class="num">LOOK 04 / AFTERIMAGE</p>
+    <h2 class="in">스커트가<br>원을 유기한다.</h2>
     <p class="note">정지컷에서 벌룬은 오해받는다. 회전이 끝난 1초, 천이 원으로 남는 그 프레임이 설계다.</p>
     <p class="sku">벌룬아방롱스커트 · 7174</p>
-    <a class="pill cta" href="https://boscono.co.kr/product/%EB%B2%8C%EB%A3%AC%EC%95%84%EB%B0%A9%EB%A1%B1%EC%8A%A4%EC%BB%A4%ED%8A%B8bcsk1043/7174/" target="_blank" rel="noopener">공기</a>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EB%B2%8C%EB%A3%AC%EC%95%84%EB%B0%A9%EB%A1%B1%EC%8A%A4%EC%BB%A4%ED%8A%B8bcsk1043/7174/" target="_blank" rel="noopener">Air</a>
   </div>
-  <div class="still"><img src="assets/04-volume.jpg" alt="balloon circle"/></div>
+  <div class="still"><img src="assets/04-volume.jpg" alt="벌룬 스커트의 원"/></div>
 </section>
-<section class="chapter" id="l05">
-  <div class="still"><img src="assets/05-crop.jpg" alt="crop jacket"/></div>
+
+<section class="chapter" id="l05" data-n="05">
+  <div class="still"><img src="assets/05-crop.jpg" alt="크롭 재킷"/></div>
   <div class="text">
     <p class="num">LOOK 05 / CROP</p>
-    <h2>기장을 버리면<br>태도가 커진다.</h2>
-    <p class="note">B라벨 크롭은 배를 보여주려는 옷이 아니다. 길이를 자르면 사각형이 더 크게 읽힌다.</p>
+    <h2 class="in slash">기장을 버리면<br>태도가 커진다.</h2>
+    <p class="note">크롭은 배를 보여주려는 옷이 아니다. 길이를 자르면 사각형이 더 크게 읽힌다.</p>
     <p class="sku">[B] 포키탑자켓 · 7630</p>
-    <a class="pill cta" href="https://boscono.co.kr/product/b%EB%9D%BC%EB%B2%A8-%ED%8F%AC%ED%82%A4%ED%83%91%EC%9E%90%EC%BC%93/7630/" target="_blank" rel="noopener">절단</a>
+    <a class="pill cta" href="https://boscono.co.kr/product/b%EB%9D%BC%EB%B2%A8-%ED%8F%AC%ED%82%A4%ED%83%91%EC%9E%90%EC%BC%93/7630/" target="_blank" rel="noopener">Crop</a>
   </div>
 </section>
-<section class="chapter reverse" id="l06">
+
+<section class="chapter reverse" id="l06" data-n="06">
   <div class="text">
-    <p class="num">LOOK 06 / STREET</p>
-    <h2>골목이<br>런웨이를 삼킨다.</h2>
-    <p class="note">흰 배경을 버리면 박시 셔츠는 보폭이 된다. 아방가르드는 걸음이다.</p>
+    <p class="num">LOOK 06 / ALLEY</p>
+    <h2 class="in">골목이<br>런웨이를 삼킨다.</h2>
+    <p class="note">흰 배경을 버리면 박시 셔츠는 보폭이 된다. 아방가르드는 포즈가 아니라 걸음이다.</p>
     <p class="sku">박시아방셔츠 · 7626</p>
-    <a class="pill cta" href="https://boscono.co.kr/product/%EB%B0%95%EC%8B%9C%EC%95%84%EB%B0%A9%EC%85%94%EC%B8%A0/7626/" target="_blank" rel="noopener">골목</a>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EB%B0%95%EC%8B%9C%EC%95%84%EB%B0%A9%EC%85%94%EC%B8%A0/7626/" target="_blank" rel="noopener">Alley</a>
   </div>
-  <div class="still"><img src="assets/06-street.jpg" alt="street layer"/></div>
+  <div class="still"><img src="assets/06-street.jpg" alt="골목의 블랙 레이어"/></div>
 </section>
-<section class="chapter" id="l07">
-  <div class="still"><img src="assets/07-noir.jpg" alt="noir dress"/></div>
+
+<section class="chapter" id="l07" data-n="07">
+  <div class="still"><img src="assets/07-noir.jpg" alt="누아르 원피스"/></div>
   <div class="text">
     <p class="num">LOOK 07 / NOIR</p>
-    <h2>한 장의 검정.<br>코디 종료.</h2>
-    <p class="note">누아르원피스는 장식을 더하지 않는다. 세로 한 줄이면 저녁이 끝난다.</p>
+    <h2 class="in">한 장의 검정.<br>코디 종료.</h2>
+    <p class="note">장식을 더하지 않는다. 세로 한 줄이면 저녁은 끝난다. 색을 덜면 형태만 남는다.</p>
     <p class="sku">누아르원피스 · 7287</p>
-    <a class="pill cta" href="https://boscono.co.kr/product/%EB%88%84%EC%95%84%EB%A5%B4%EC%9B%90%ED%94%BC%EC%8A%A4/7287/" target="_blank" rel="noopener">누아르</a>
+    <a class="pill cta" href="https://boscono.co.kr/product/%EB%88%84%EC%95%84%EB%A5%B4%EC%9B%90%ED%94%BC%EC%8A%A4/7287/" target="_blank" rel="noopener">Noir</a>
   </div>
 </section>
 </div>
+
 <section class="sheet" id="words">
-  <p class="k">CUT LIST</p>
-  <p class="vocab">이름에 이미 <i>kal</i>이 들어 있다.</p>
+  <p class="k">LEXICON</p>
+  <p class="vocab in">이름 안에 이미 <i>칼</i>이 들어 있다.</p>
   <dl class="defs">
     <dt>UNEVEN</dt><dd>한쪽 밑단이 늦게 온다. 대칭을 포기한 자리에서 하루가 시작된다.</dd>
     <dt>BALLOON</dt><dd>멈출 때 옷 안에 공기가 남는다. 부피는 과장이 아니라 구조다.</dd>
     <dt>BOXY</dt><dd>어깨가 몸보다 넓다. 사각형이 인체를 다시 그린다.</dd>
-    <dt>POCKET</dt><dd>수납이 아니라 건축. 무게가 이동하면 태도가 바뀌다.</dd>
+    <dt>POCKET</dt><dd>수납이 아니라 건축. 무게가 이동하면 태도가 바뀐다.</dd>
     <dt>STITCH</dt><dd>봉제선은 장식이 아니다. 선이 옷을 설명한다.</dd>
     <dt>NOIR</dt><dd>색을 덜면 형태만 남는다. 한 장이면 충분하다.</dd>
   </dl>
 </section>
-<section class="sheet" id="l08">
+
+<section class="sheet" id="l08" data-n="08">
   <p class="k">LOOK 08 / DRAWING</p>
-  <h2 style="margin-bottom:28px">이 선은<br>장식이 아니다.</h2>
+  <h2 class="in" style="margin-bottom:28px">이 선은<br>장식이 아니다.</h2>
   <div class="score">
     <ol>
-      <li><span>I</span><div><strong>어쌓남의 삼중주</strong><p class="note" style="margin-top:8px">언발 조끼 아래 언발 티, 그 아래 벌룬 팬츠.</p></div></li>
-      <li><span>II</span><div><strong>기둥과 공기</strong><p class="note" style="margin-top:8px">롱조끼가 수직을 세우고 스커트가 원을 그린다.</p></div></li>
-      <li><span>III</span><div><strong>골목이 삼킨다</strong><p class="note" style="margin-top:8px">어깨가 일상의 폭으로 내려올 때 아방가르드는 걸음이 된다.</p></div></li>
+      <li><span>I</span><div><strong>어긋남의 삼중주</strong><p class="note" style="margin-top:8px">언발 조끼 아래 언발 티. 그 아래 벌룬 팬츠. 세 번 어긋나면 균형이 된다.</p></div></li>
+      <li><span>II</span><div><strong>기둥과 잔향</strong><p class="note" style="margin-top:8px">롱조끼가 수직을 세우고, 스커트가 원을 유기한다.</p></div></li>
+      <li><span>III</span><div><strong>골목이 삼킨다</strong><p class="note" style="margin-top:8px">어깨가 일상의 폭으로 내려올 때, 아방가르드는 걸음이 된다.</p></div></li>
     </ol>
     <div class="pair">
-      <img src="assets/08-stitch.jpg" alt="stitch"/>
-      <img src="assets/03-pocket.jpg" alt="pocket"/>
+      <img src="assets/08-stitch.jpg" alt="스티치 도면"/>
+      <img src="assets/03-pocket.jpg" alt="포켓 무게"/>
     </div>
   </div>
 </section>
+
 <section class="sheet paper">
   <p class="k">RETURNED</p>
-  <h2>유행이 아니라<br>아직 이 비대칭이<br>필요해서.</h2>
+  <h2 class="in">유행이 아니라<br>아직 이 어긋남이<br>필요해서.</h2>
   <p class="sub">언발헤레조끼 6차. 재입고는 할인이 아니라 형태의 귀환이다.</p>
-  <p style="margin-top:28px"><a class="pill" href="https://boscono.co.kr/product/%EC%96%B8%EB%B0%9C%ED%97%A4%EB%A0%88%EC%A1%B0%EB%81%BC-6%EC%B0%A8-%EC%B6%94%EA%B0%80%EC%A0%9C%EC%9E%91/7223/" target="_blank" rel="noopener" style="color:#161310;border-color:#161310">귀환</a></p>
+  <p style="margin-top:28px"><a class="pill" href="https://boscono.co.kr/product/%EC%96%B8%EB%B0%9C%ED%97%A4%EB%A0%88%EC%A1%B0%EB%81%BC-6%EC%B0%A8-%EC%B6%94%EA%B0%80%EC%A0%9C%EC%9E%91/7223/" target="_blank" rel="noopener" style="color:#161310;border-color:#161310">Return</a></p>
 </section>
+
 <footer>
-  <div><strong>BOSCONO LOOK</strong>에디토리얼 재촬영. 공식몰 썸네일의 복제가 아니다.</div>
+  <div><strong>BOSCONO LOOK</strong>공식몰 썸네일의 복제가 아니다. 형태를 다시 찍은 편집실.</div>
   <div><p><a href="https://boscono.co.kr/" target="_blank" rel="noopener">boscono.co.kr</a></p><p><a href="https://www.instagram.com/black_boscono/" target="_blank" rel="noopener">@black_boscono</a></p></div>
-  <div><p>CS 02-536-4145</p><p>juny79 / boscono-look</p></div>
+  <div><p>CS 02-536-4145</p><p>ISSUE 00 / 2026</p></div>
 </footer>
+
 <script>
-const cur=document.getElementById('cur');
-const clock=document.getElementById('clock');
-const hero=document.querySelector('#heroStill img');
-let n='00';
-document.querySelectorAll('.row,.chapter').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{n=el.dataset.n||el.id.replace('l','')||'00';cur.querySelector('b').textContent=n;});
-});
-window.addEventListener('mousemove',e=>{
-  cur.style.left=e.clientX+'px';
-  cur.style.top=e.clientY+'px';
-  if(hero){
-    const x=(e.clientX/innerWidth-0.5)*12;
-    const y=(e.clientY/innerHeight-0.5)*8;
-    hero.style.transform='scale(1.1) translate('+x+'px,'+y+'px)';
+(function(){
+  const cur=document.getElementById('cur');
+  const clock=document.getElementById('clock');
+  const flash=document.getElementById('flash');
+  const stamp=document.getElementById('heroStamp');
+  const frameMeta=document.getElementById('frameMeta');
+  const fill=document.getElementById('barFill');
+  const heroImgs=[...document.querySelectorAll('#heroStill img')];
+  const labels=['LOOK 01 — COLUMN','LOOK 02 — DELAY','LOOK 04 — AIR','LOOK 07 — NOIR'];
+  const codes=['01','02','04','07'];
+  let hi=0, n='00';
+
+  function cutFlash(){
+    flash.classList.remove('on');
+    void flash.offsetWidth;
+    flash.classList.add('on');
   }
-});
-function tick(){
-  const d=new Date();
-  const p=v=>String(v).padStart(2,'0');
-  clock.textContent=p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
-}
-tick();setInterval(tick,1000);
+  function setHero(i){
+    heroImgs.forEach((img,k)=>img.classList.toggle('on',k===i));
+    stamp.textContent=labels[i];
+    frameMeta.textContent='Cut '+codes[i]+' / 08';
+    cur.querySelector('b').textContent=codes[i];
+    cutFlash();
+  }
+  setInterval(()=>{hi=(hi+1)%heroImgs.length;setHero(hi);},4200);
+
+  document.querySelectorAll('.row,.chapter,#l08').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{
+      n=el.dataset.n||'00';
+      cur.querySelector('b').textContent=n;
+    });
+  });
+
+  window.addEventListener('mousemove',e=>{
+    cur.style.left=e.clientX+'px';
+    cur.style.top=e.clientY+'px';
+    const on=document.querySelector('#heroStill img.on');
+    if(on){
+      const x=(e.clientX/innerWidth-0.5)*14;
+      const y=(e.clientY/innerHeight-0.5)*9;
+      on.style.transform='scale(1.12) translate('+x+'px,'+y+'px)';
+    }
+  });
+
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
+  },{threshold:.18});
+  document.querySelectorAll('.in').forEach(el=>io.observe(el));
+
+  const spy=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const id=e.target.dataset.n;
+      if(id){cur.querySelector('b').textContent=id;n=id;}
+    });
+  },{threshold:.45});
+  document.querySelectorAll('[data-n]').forEach(el=>spy.observe(el));
+
+  function tick(){
+    const d=new Date();
+    const p=v=>String(v).padStart(2,'0');
+    clock.textContent=p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
+    const max=document.documentElement.scrollHeight-innerHeight;
+    fill.style.height=(max>0?(scrollY/max)*100:0)+'%';
+  }
+  tick();setInterval(tick,250);
+})();
 </script>
 </body>
 </html>
